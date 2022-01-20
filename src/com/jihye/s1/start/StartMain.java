@@ -15,26 +15,31 @@ public class StartMain {
 	public static void main(String[] args) {
 		System.out.println("DB연동 test 시작");
 		
-		LocationDAO locationDAO = new LocationDAO();
-		LocationView locationView = new LocationView();
-		
-		try {
-			List<LocationDTO> ar = locationDAO.getList();
-			locationView.view(ar);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-//		DepartmentDAO departmentDAO = new DepartmentDAO();
-//		DepartmentView departmentView = new DepartmentView();
+//		LocationDAO locationDAO = new LocationDAO();
+//		LocationView locationView = new LocationView();
+//		
 //		try {
-//			List<DepartmentDTO> ar = departmentDAO.getList();
-//			departmentView.view(ar);
+//			List<LocationDTO> ar = locationDAO.getList();
+//			locationView.view(ar);
 //		} catch (Exception e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+//		'--------------------Department test-------------------------------'
+		DepartmentDAO departmentDAO = new DepartmentDAO();
+//		DepartmentView departmentView = new DepartmentView(); //선언 객체 생성 = new 생성자호출() 중복선언이 안되는 이유는 찾아갈때 주소가 헷갈려서 
+		try {
+			DepartmentDTO departmentDTO = new DepartmentDTO();
+			departmentDTO.setDepartment_id(20);
+			departmentDTO = departmentDAO.getOne(departmentDTO);
+//			DepartmentDTO departmentDTO = departmentDAO.getOne(20);
+			System.out.println(departmentDTO.getDepartment_name());
+//			List<DepartmentDTO> ar = departmentDAO.getList();
+//			departmentView.view(ar);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		

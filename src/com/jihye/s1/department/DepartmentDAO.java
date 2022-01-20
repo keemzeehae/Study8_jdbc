@@ -17,6 +17,53 @@ public class DepartmentDAO {
 		dbConnector = new DBConnector();
 	}
 	
+	//부서번호로 조회
+	public DepartmentDTO getOne(DepartmentDTO dep) throws Exception {
+		//초기값
+		DepartmentDTO departmentDTO = null;
+		
+		
+		//1. DB 로그인 
+		Connection con = dbConnector.getConnect();
+		//2. SQL Query 문 작성
+		String sql = "SELECT * FROM DEPARTMENTS WHERE DEPARTMENT_ID = ?" ;
+		//3. Query문 미리 전송해서 DB가 준비
+		PreparedStatement st = con.prepareStatement(sql);
+		//4. ? 값을 세팅
+		//st.set데이터타입(int index-> 물음표 갯수, 값); 
+		//index는 ? 순서번호
+		//그러나 oracle은 1번 부터 시작 ?
+		st.setInt(1, dep.getDepartment_id());
+		//5. 최종 전송 후 결과 처리
+		ResultSet rs = st.executeQuery();
+		//한개의 row가 있거나 없거나 커서가 맨처음부터 읽어봐야지 
+		//한개의 row가 있는지 없는지 알 수 있음
+		if(rs.next()) {
+			//데이터가 있을 때 
+			departmentDTO = new DepartmentDTO();
+			departmentDTO.setDepartment_id(rs.getInt("department_id"));
+			departmentDTO.setDepartment_name(rs.getString("department_name"));
+			departmentDTO.setManager_id(rs.getInt("manager_id"));
+			departmentDTO.setLocation_id(rs.getInt("location_id"));
+			
+			//departmentDTO = new DepartmentDTO();
+//			departmentDTO.setDepartment_id(rs.getInt(0));??
+//			departmentDTO.setDepartment_name(rs.getString(1));
+//			departmentDTO.setManager_id(rs.getInt(2));
+//			departmentDTO.setLocation_id(rs.getInt(3));
+			
+		}
+		
+		//6. 자원해제
+		rs.close();
+		st.close();
+		con.close();
+		return departmentDTO;
+	}
+
+	
+	
+	//전체조회
 	public List<DepartmentDTO> getList() throws Exception {
 		ArrayList<DepartmentDTO> ar = new ArrayList<>();
 		
