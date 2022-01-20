@@ -1,5 +1,6 @@
 package com.jihye.s1.department;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -27,18 +28,24 @@ public class DepartmentController {
 			System.out.println("3. 나가기");
 			System.out.println("번호를 입력하세요.");
 			int select = sc.nextInt();
-			
+			List<DepartmentDTO> ar = departmentDAO.getList();
 			switch (select) {
 			case 1:
-				List<DepartmentDTO> ar = departmentDAO.getList();
 				departmentView.view(ar);
 				break;
 			case 2:
 				System.out.println("검색할 부서 번호를 입력하세요.");
-				DepartmentDTO departmentDTO = new DepartmentDTO();
+				DepartmentDTO departmentDTO = null;
 				departmentDTO.setDepartment_id(sc.nextInt());
 				departmentDTO = departmentDAO.getOne(departmentDTO);
 				
+				for(int i=0;i<ar.size();i++) {
+					if (departmentDTO.equals(ar.get(i).getDepartment_id())){
+						departmentDTO = ar.get(i);
+						break;
+					}
+					
+				}
 				break;
 			default :
 			
