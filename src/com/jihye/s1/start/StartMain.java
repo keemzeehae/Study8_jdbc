@@ -15,6 +15,7 @@ public class StartMain {
 
 	public static void main(String[] args) {
 		System.out.println("DB연동 test 시작");
+		FrontController frontController = new FrontController();
 		
 //		LocationDAO locationDAO = new LocationDAO();
 //		LocationView locationView = new LocationView();
@@ -41,14 +42,14 @@ public class StartMain {
 			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-			DepartmentController dpController = new DepartmentController();
-			try {
-				dpController.start();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
+//			DepartmentController dpController = new DepartmentController();
+//			try {
+//				dpController.start();
+//			} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		
 		
 		
 		System.out.println("DB연동 test 끝");

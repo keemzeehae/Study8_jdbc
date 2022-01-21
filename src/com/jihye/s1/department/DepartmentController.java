@@ -35,17 +35,11 @@ public class DepartmentController {
 				break;
 			case 2:
 				System.out.println("검색할 부서 번호를 입력하세요.");
-				DepartmentDTO departmentDTO = null;
+				DepartmentDTO departmentDTO = new DepartmentDTO();
 				departmentDTO.setDepartment_id(sc.nextInt());
 				departmentDTO = departmentDAO.getOne(departmentDTO);
-				
-				for(int i=0;i<ar.size();i++) {
-					if (departmentDTO.equals(ar.get(i).getDepartment_id())){
-						departmentDTO = ar.get(i);
-						break;
-					}
-					
-				}
+				departmentView.view(departmentDTO);
+			
 				break;
 			default :
 			
