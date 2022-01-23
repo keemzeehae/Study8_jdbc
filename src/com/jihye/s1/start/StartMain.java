@@ -13,10 +13,10 @@ import com.jihye.s1.util.DBConnector;
 
 public class StartMain {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		System.out.println("DB연동 test 시작");
 		FrontController frontController = new FrontController();
-		
+		frontController.mainStart();
 //		LocationDAO locationDAO = new LocationDAO();
 //		LocationView locationView = new LocationView();
 //		
