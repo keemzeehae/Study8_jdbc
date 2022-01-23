@@ -3,16 +3,20 @@ package com.jihye.s1.start;
 import java.util.Scanner;
 
 import com.jihye.s1.department.DepartmentController;
+import com.jihye.s1.location.LocationController;
 
 public class FrontController {
 	
 	private Scanner sc;
 	private DepartmentController departmentController;
+	private LocationController locationController;
 	//locationController 와야하고 EmployeeController 도 와야함
 	
 	public FrontController() {
 		sc = new Scanner(System.in);
 		departmentController = new DepartmentController();
+		locationController = new LocationController();
+		
 	} 
 	
 	public void mainStart() throws Exception{
@@ -33,6 +37,7 @@ public class FrontController {
 				departmentController.start(); 
 				break;
 			case 3 :
+				locationController.start();
 				//내가 만들기 locationController의 start 메서드 호출
 				break;
 			default :

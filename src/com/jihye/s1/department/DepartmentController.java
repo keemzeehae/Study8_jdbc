@@ -28,9 +28,10 @@ public class DepartmentController {
 			System.out.println("3. 나가기");
 			System.out.println("번호를 입력하세요.");
 			int select = sc.nextInt();
-			List<DepartmentDTO> ar = departmentDAO.getList();
+			
 			switch (select) {
 			case 1:
+				List<DepartmentDTO> ar = departmentDAO.getList();
 				departmentView.view(ar);
 				break;
 			case 2:
