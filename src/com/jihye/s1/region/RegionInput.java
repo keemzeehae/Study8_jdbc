@@ -26,7 +26,7 @@ public class RegionInput {
 		System.out.println("Region ID를 입력하세요");
 		regionDTO.setRegion_id(sc.nextLong());
 		System.out.println("Region Name 을 입력하세요");
-		regionDTO.setRegion_name(sc.next());
+		regionDTO.setRegion_name(sc.next()); 
 		
 		return regionDTO;
 		

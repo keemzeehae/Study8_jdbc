@@ -54,6 +54,7 @@ public class FrontController {
 				break;
 			default :
 				flag = false;
+				break;
 			}
 		}
 	}

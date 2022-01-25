@@ -12,7 +12,12 @@ public class DepartmentView {
 		System.out.println("---------------------------------------------------");
 	}
 		
-	
+	public void view (String message) {
+		System.out.println("===========================");
+		System.out.println("Result: "+ message);
+		System.out.println("===========================");
+		
+	}
 	
 	public void view(List<DepartmentDTO> ar) {
 		//모두 출력
