@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.jihye.s1.department.DepartmentController;
 import com.jihye.s1.employee.EmployeeController;
 import com.jihye.s1.location.LocationController;
+import com.jihye.s1.region.RegionController;
 
 public class FrontController {
 	
@@ -12,6 +13,7 @@ public class FrontController {
 	private DepartmentController departmentController;
 	private LocationController locationController;
 	private EmployeeController employeeController;
+	private RegionController regionController;
 	//locationController 와야하고 EmployeeController 도 와야함
 	
 	public FrontController() {
@@ -19,6 +21,8 @@ public class FrontController {
 		departmentController = new DepartmentController();
 		locationController = new LocationController();
 		employeeController = new EmployeeController();
+		regionController = new RegionController();
+	
 	} 
 	
 	public void mainStart() throws Exception{
@@ -28,7 +32,8 @@ public class FrontController {
 			System.out.println("1. 직원 관리");
 			System.out.println("2. 부서 관리");
 			System.out.println("3. 지역 관리");
-			System.out.println("4. 프로그램 종료");
+			System.out.println("4. 대륙 관리");
+			System.out.println("5. 프로그램 종료");
 			int select = sc.nextInt();
 			
 			switch (select) {
@@ -41,6 +46,10 @@ public class FrontController {
 				break;
 			case 3 :
 				locationController.start();
+				//내가 만들기 locationController의 start 메서드 호출
+				break;
+			case 4 :
+				regionController.start();
 				//내가 만들기 locationController의 start 메서드 호출
 				break;
 			default :

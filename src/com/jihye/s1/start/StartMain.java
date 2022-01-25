@@ -9,6 +9,8 @@ import com.jihye.s1.department.DepartmentView;
 import com.jihye.s1.location.LocationDAO;
 import com.jihye.s1.location.LocationDTO;
 import com.jihye.s1.location.LocationView;
+import com.jihye.s1.region.RegionDAO;
+import com.jihye.s1.region.RegionDTO;
 import com.jihye.s1.util.DBConnector;
 
 public class StartMain {
@@ -16,7 +18,27 @@ public class StartMain {
 	public static void main(String[] args) throws Exception {
 		System.out.println("DB연동 test 시작");
 		FrontController frontController = new FrontController();
-		frontController.mainStart();
+		
+		
+		try {
+			RegionDAO regionDAO = new RegionDAO();
+			RegionDTO regionDTO = new RegionDTO();
+			
+			regionDTO.setRegion_name("South Pole");
+			regionDTO.setRegion_id(5L);
+
+//			int result = regionDAO.setInsert(regionDTO);
+//			int result = regionDAO.setDelete(regionDTO);
+			int result = regionDAO.setUpdate(regionDTO);
+			System.out.println(result);
+			if (result > 0) {
+				System.out.println("성공");
+			} else {
+				System.out.println("실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 //		LocationDAO locationDAO = new LocationDAO();
 //		LocationView locationView = new LocationView();
 //		
@@ -39,7 +61,7 @@ public class StartMain {
 //			List<DepartmentDTO> ar = departmentDAO.getList();
 //			departmentView.view(ar);
 //		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 //			DepartmentController dpController = new DepartmentController();
@@ -50,8 +72,7 @@ public class StartMain {
 //				e.printStackTrace();
 //			}
 //		
-		
-		
+
 		System.out.println("DB연동 test 끝");
 
 	}
